@@ -5,7 +5,15 @@ import {useEffect} from 'react'
 
 export default function Home() {
   useEffect(() => {
-        window.location.assign('https://techproper.xyz/')
+        //window.location.assign('https://techproper.xyz/')
+        let name = "post";
+        var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.href);
+        var queryPostParm = match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+        if(queryPostParm) {
+          window.location.assign('https://techproper.xyz/'+queryPostParm)
+        } else {
+          window.location.assign('https://techproper.xyz/')
+        }
     })
 
   return (
